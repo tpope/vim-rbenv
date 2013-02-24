@@ -3,9 +3,10 @@
 Author:  Tim Pope <http://tpo.pe/>
 License: Same terms as Vim itself (see |license|)
 
-This plugin is only available if 'compatible' is not set.
+This plugin is only available if 'compatible' is not set and rbenv is in the
+$PATH.
 
-COMMANDS                                        *:Rvm*
+COMMANDS                                        *:Rbenv*
 
 :Rbenv                  Invoke an rbenv command.  Includes tab complete.
 
