@@ -1,0 +1,18 @@
+*rbenv.txt*  Support for rbenv
+
+Author:  Tim Pope <http://tpo.pe/>
+License: Same terms as Vim itself (see |license|)
+
+This plugin is only available if 'compatible' is not set.
+
+COMMANDS                                        *:Rvm*
+
+:Rbenv                  Invoke an rbenv command.  Includes tab complete.
+
+ABOUT                                           *rbenv-about*
+
+Grab the latest version or report a bug on GitHub:
+
+https://github.com/tpope/vim-rbenv
+
+ vim:tw=78:et:ft=help:norl:

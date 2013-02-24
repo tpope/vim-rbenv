@@ -1,13 +1,9 @@
 # rbenv.vim
 
-This plugin tells recent versions of [vim-ruby][] where your Ruby installs are
-located, so that it can set `'path'` and [`'tags'`][rbenv-ctags] in your Ruby
-buffers to reflect the `$LOAD_PATH` of the Ruby version specified in the
-nearest `.ruby-version` file.
-
-Without this plugin, vim-ruby figures out the `$LOAD_PATH` by shelling out and
-asking Ruby itself.  Thus, the only thing this plugin has to offer is a small
-performance boost.
+This simple plugin provides a `:Rbenv` command that wraps `!rbenv` with tab
+complete.  It also tells recent versions of [vim-ruby][] where your Ruby
+installs are located, so that it can set `'path'` and [`'tags'`][rbenv-ctags]
+in your Ruby buffers to reflect the nearest `.ruby-version` file.
 
 [vim-ruby]: https://github.com/vim-ruby/vim-ruby
 [rbenv-ctags]: https://github.com/tpope/rbenv-ctags

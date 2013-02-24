@@ -7,6 +7,17 @@ if exists("g:loaded_rbenv") || v:version < 700 || &cp || !executable('rbenv')
 endif
 let g:loaded_rbenv = 1
 
+command! -bar -nargs=* -complete=custom,s:Complete Rbenv :!rbenv <args>
+
+function! s:Complete(A, L, P)
+  let g:xxx = [a:A, a:L, a:P]
+  if a:L =~# ' .* '
+    return system("rbenv completions".matchstr(a:L, ' .* '))
+  else
+    return system("rbenv commands")
+  endif
+endfunction
+
 function! s:rbenv_root()
   return empty($RBENV_ROOT) ? expand('~/.rbenv') : $RBENV_ROOT
 endfunction
