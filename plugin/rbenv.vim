@@ -7,7 +7,33 @@ if exists("g:loaded_rbenv") || v:version < 700 || &cp || !executable('rbenv')
 endif
 let g:loaded_rbenv = 1
 
-command! -bar -nargs=* -complete=custom,s:Complete Rbenv :!rbenv <args>
+command! -bar -nargs=* -complete=custom,s:Complete Rbenv
+      \ if get([<f-args>], 0, '') ==# 'shell' |
+      \   exe s:shell(<f-args>) |
+      \ else |
+      \   exe '!rbenv ' . <q-args> |
+      \   call extend(g:ruby_version_paths, s:ruby_version_paths(), 'keep') |
+      \ endif
+
+function! s:shell(_, ...)
+  if !a:0
+    if empty($RBENV_VERSION)
+      echo 'rbenv.vim: no shell-specific version configured'
+    else
+      echo $RBENV_VERSION
+    endif
+    return ''
+  elseif a:1 ==# '--unset'
+    let $RBENV_VERSION = ''
+  else
+    let $RBENV_VERSION = a:1
+  endif
+  call s:set_paths()
+  if &filetype ==# 'ruby'
+    set filetype=ruby
+  endif
+  return ''
+endfunction
 
 function! s:Complete(A, L, P)
   let g:xxx = [a:A, a:L, a:P]
@@ -53,16 +79,22 @@ if !exists('g:ruby_version_paths')
   let g:ruby_version_paths = {}
 endif
 
-call extend(g:ruby_version_paths, s:ruby_version_paths(), 'keep')
+function! s:set_paths() abort
+  call extend(g:ruby_version_paths, s:ruby_version_paths(), 'keep')
+  if !empty($RBENV_VERSION)
+    let ver = $RBENV_VERSION
+  elseif filereadable(s:rbenv_root() . '/version')
+    let ver = get(readfile(s:rbenv_root() . '/version', '', 1), 0, '')
+  else
+    return
+  endif
+  if has_key(g:ruby_version_paths, ver)
+    let g:ruby_default_path = g:ruby_version_paths[ver]
+  else
+    unlet! g:ruby_default_path
+  endif
+endfunction
 
-if exists('$RBENV_VERSION')
-  let s:version = $RBENV_VERSION
-elseif filereadable(s:rbenv_root() . '/version')
-  let s:version = get(readfile(s:rbenv_root() . '/version', '', 1), 0, '')
-endif
-
-if exists('s:version') && has_key(g:ruby_version_paths, s:version)
-  let g:ruby_default_path = g:ruby_version_paths[s:version]
-endif
+call s:set_paths()
 
 " vim:set et sw=2:

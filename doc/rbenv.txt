@@ -8,7 +8,9 @@ $PATH.
 
 COMMANDS                                        *:Rbenv*
 
-:Rbenv                  Invoke an rbenv command.  Includes tab complete.
+:Rbenv [args]           Invoke an rbenv command.  Includes tab complete.
+
+:Rbenv shell [version]  Set or show the Vim-specific Ruby version.
 
 ABOUT                                           *rbenv-about*
 
