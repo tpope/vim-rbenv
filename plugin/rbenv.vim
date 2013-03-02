@@ -1,6 +1,6 @@
 " rbenv.vim - rbenv support
 " Maintainer:   Tim Pope <http://tpo.pe/>
-" Version:      1.0
+" Version:      1.1
 
 if exists("g:loaded_rbenv") || v:version < 700 || &cp || !executable('rbenv')
   finish
