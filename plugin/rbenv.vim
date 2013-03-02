@@ -38,7 +38,6 @@ function! s:shell(_, ...)
 endfunction
 
 function! s:Complete(A, L, P)
-  let g:xxx = [a:A, a:L, a:P]
   if a:L =~# ' .* '
     return system("rbenv completions".matchstr(a:L, ' .* '))
   else
