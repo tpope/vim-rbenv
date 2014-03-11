@@ -25,7 +25,7 @@ function! s:shell(_, ...)
     return ''
   elseif a:1 ==# '--unset'
     let $RBENV_VERSION = ''
-  elseif !isdirectory(s:rbenv_root() . '/' . a:1)
+  elseif !isdirectory(s:rbenv_root() . '/versions/' . a:1)
     echo 'rbenv.vim: version `' . a:1 . "' not installed"
   else
     let $RBENV_VERSION = a:1
