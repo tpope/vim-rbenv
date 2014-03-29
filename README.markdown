@@ -5,8 +5,11 @@ complete.  It also tells recent versions of [vim-ruby][] where your Ruby
 installs are located, so that it can set `'path'` and [`'tags'`][rbenv-ctags]
 in your Ruby buffers to reflect the nearest `.ruby-version` file.
 
+Bonus: [projectile.vim][] support for rbenv plugins.
+
 [vim-ruby]: https://github.com/vim-ruby/vim-ruby
 [rbenv-ctags]: https://github.com/tpope/rbenv-ctags
+[projectile.vim]: https://github.com/tpope/vim-projectile
 
 ## Installation
 

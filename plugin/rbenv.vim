@@ -98,4 +98,24 @@ endfunction
 
 call s:set_paths()
 
+function! s:projectile_detect() abort
+  let root = s:rbenv_root() . '/plugins/'
+  if g:projectile_file[0 : len(root)-1] ==# root
+    call projectile#append(root . matchstr(g:projectile_file, '[^/]\+', len(root)), {
+          \ "bin/rbenv-*": {"command": "command", "template": [
+          \   '#!/usr/bin/env bash',
+          \   '#',
+          \   '# Summary:',
+          \   '#',
+          \   '# Usage: rbenv {}',
+          \ ]},
+          \ "etc/rbenv.d/*.bash": {"command": "hook"}})
+  endif
+endfunction
+
+augroup rbenv
+  autocmd!
+  autocmd User ProjectileDetect call s:projectile_detect()
+augroup END
+
 " vim:set et sw=2:
