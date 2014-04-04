@@ -24,8 +24,10 @@ then simply copy and paste:
 
 > My Vim insists on using the system Ruby.
 
-You're using zsh on OS X, aren't you?  Move that stupid `/etc/zshenv`
-to `/etc/zshrc`.
+You're using zsh on OS X, aren't you? Here are some things to try:
+
+* Move `/etc/zshenv` to `/etc/zshrc`.
+* Set your `PATH` in `~/.zshenv` instead of `~/.zshrc`.
 
 ## Self-Promotion
 
