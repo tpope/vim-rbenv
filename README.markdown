@@ -26,8 +26,8 @@ then simply copy and paste:
 
 You're using zsh on OS X, aren't you? Here are some things to try:
 
-* Move `/etc/zshenv` to `/etc/zshrc`.
-* Set your `PATH` in `~/.zshenv` instead of `~/.zshrc`.
+* Move `/etc/zshenv` to `/etc/zprofile`, if you're on Yosemite or earlier.
+* Set your `PATH` in `~/.zprofile` instead of `~/.zshrc` or `~/.zshenv`.
 
 ## Self-Promotion
 
